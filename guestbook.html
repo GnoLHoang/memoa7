@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lưu Bút - Kỷ Yếu Lớp</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .guestbook-container {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .write-section {
+            background-color: var(--c-surface);
+            padding: 2rem;
+            border: 2px dashed var(--c-border);
+            border-radius: 8px;
+        }
+
+        .messages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .message-card {
+            background: #fff;
+            padding: 20px;
+            position: relative;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.05);
+            border-radius: 2px;
+            /* Sticky note style */
+            background: linear-gradient(135deg, #fffbc8 0%, #ffffd0 100%);
+            transform: rotate(calc(-2deg + 4deg * var(--rand, 0.5)));
+            transition: transform 0.3s;
+        }
+
+        .message-card:hover {
+            transform: scale(1.05) rotate(0);
+            z-index: 10;
+        }
+
+        /* Tape effect */
+        .message-card::before {
+            content: '';
+            position: absolute;
+            top: -10px; left: 50%;
+            transform: translateX(-50%) rotate(-3deg);
+            width: 80px; height: 25px;
+            background-color: rgba(255,255,255,0.4);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .msg-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            border-bottom: 1px dashed rgba(0,0,0,0.1);
+            padding-bottom: 10px;
+        }
+        
+        .msg-header img {
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .msg-header h4 { margin: 0; font-family: var(--f-body); color: #333; }
+        .msg-header span { font-size: 0.8rem; opacity: 0.6; }
+        
+        .msg-body {
+            font-family: var(--f-heading);
+            font-style: italic;
+            font-size: 1.1rem;
+            line-height: 1.5;
+            color: #444;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper animate-fade-in">
+        <main style="flex: 1; padding: 2rem 0;">
+            <div style="text-align: center;">
+                <h1 style="font-size: 3rem;">Góc Lưu Bút</h1>
+                <p style="font-style: italic;">Những dòng chữ ở lại cùng thanh xuân.</p>
+            </div>
+
+            <div class="guestbook-container">
+                <!-- Form Viết Lưu Bút -->
+                <div class="write-section">
+                    <h3>✍️ Viết lời nhắn của bạn</h3>
+                    <form id="msgForm" onsubmit="postMessage(event)">
+                        <div class="form-group">
+                            <label>Tên của bạn:</label>
+                            <input type="text" id="authorName" required placeholder="Ví dụ: Nguyễn Văn A">
+                        </div>
+                        <div class="form-group">
+                            <label>Lời nhắn:</label>
+                            <textarea id="authorMsg" rows="4" required placeholder="Bạn muốn nói điều gì..."></textarea>
+                        </div>
+                        <button type="submit" class="btn">Đăng Lưu Bút</button>
+                    </form>
+                </div>
+
+                <!-- Danh sách Lưu Bút -->
+                <div class="messages-grid" id="msgGrid">
+                    <!-- Data injected -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Dữ liệu dùng chung giả lập (LocalStorage memory)
+        let messages = JSON.parse(localStorage.getItem('yearbook_messages')) || [
+            { name: "Lớp trưởng", text: "Cảm ơn các bạn vì 3 năm tuyệt vời. Chúc mọi người luôn thành công và hạnh phúc!", date: "10/05/2024" },
+            { name: "Hải Anh", text: "Nhớ những lúc rủ nhau đi ăn trưa. Sẽ nhớ mãi góc sân trường này.", date: "11/05/2024" },
+            { name: "Minh Tuấn", text: "Kỷ niệm không bao giờ phai. Tạm biệt 12A1 nhé!", date: "12/05/2024" }
+        ];
+
+        function renderMessages() {
+            const grid = document.getElementById('msgGrid');
+            grid.innerHTML = '';
+            
+            // Xếp tin mới nhất lên trên
+            [...messages].reverse().forEach(m => {
+                const item = document.createElement('div');
+                item.className = 'message-card';
+                item.style.setProperty('--rand', Math.random());
+                
+                item.innerHTML = `
+                    <div class="msg-header">
+                        <img src="https://ui-avatars.com/api/?name=${encodeURIComponent(m.name)}&background=random" alt="Avatar">
+                        <div>
+                            <h4>${m.name}</h4>
+                            <span>${m.date}</span>
+                        </div>
+                    </div>
+                    <div class="msg-body">
+                        "${m.text}"
+                    </div>
+                `;
+                grid.appendChild(item);
+            });
+        }
+
+        function postMessage(e) {
+            e.preventDefault();
+            const name = document.getElementById('authorName').value;
+            const text = document.getElementById('authorMsg').value;
+            
+            const today = new Date();
+            const dateStr = ${"`"}${today.getDate().toString().padStart(2, '0')}/${(today.getMonth()+1).toString().padStart(2, '0')}/${today.getFullYear()}${"`"};
+
+            messages.push({ name, text, date: dateStr });
+            localStorage.setItem('yearbook_messages', JSON.stringify(messages));
+            
+            document.getElementById('msgForm').reset();
+            renderMessages();
+        }
+
+        // Init
+        renderMessages();
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Nhập - Kỷ Yếu Lớp</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="page-wrapper" style="justify-content: center; align-items: center; min-height: 100vh;">
+        <div class="login-container yearbook-border animate-fade-in" style="max-width: 400px; width: 100%; text-align: center; padding: 2rem;">
+            <h1 style="color: var(--c-accent); margin-bottom: 0.5rem; font-size: 2.2rem;">Kỷ Yếu Lớp</h1>
+            <p style="margin-bottom: 2rem; font-style: italic; opacity: 0.8;">Chỉ dành cho thành viên được mời.</p>
+            
+            <form id="loginForm" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required placeholder="Nhập email của bạn...">
+                </div>
+                <div class="form-group">
+                    <label for="password">Mật khẩu</label>
+                    <input type="password" id="password" required placeholder="Nhập mật khẩu...">
+                </div>
+                <!-- Hiển thị lỗi nếu có -->
+                <p id="errorMsg" style="color: red; font-size: 0.9rem; display: none; margin-bottom: 1rem;"></p>
+                <button type="submit" class="btn" style="width: 100%;">Mở Khóa Kỷ Niệm</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        function handleLogin(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Mock xác thực: Chấp nhận bất kỳ email nào không rỗng và password là '123' ví dụ
+            if (email && password) {
+                // Trong thực tế, gọi API. Ở đây, set auth cứng.
+                localStorage.setItem('yearbook_auth', 'true');
+                window.location.href = 'index.html';
+            } else {
+                const err = document.getElementById('errorMsg');
+                err.innerText = "Vui lòng nhập Email và Mật khẩu!";
+                err.style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>

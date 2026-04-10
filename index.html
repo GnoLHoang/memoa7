@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Chủ - Kỷ Yếu Lớp</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .hero {
+            position: relative;
+            text-align: center;
+            color: white;
+            margin-bottom: 3rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .hero img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            filter: contrast(1.1) brightness(0.8) sepia(0.2);
+            display: block;
+        }
+        .hero-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+        }
+        .hero-text h1 {
+            color: #FFFDF9;
+            font-size: 3.5rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+            margin-bottom: 0.5rem;
+        }
+        .hero-text p {
+            font-size: 1.2rem;
+            font-style: italic;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 4rem;
+        }
+        .stat-card {
+            text-align: center;
+            padding: 20px;
+            min-width: 150px;
+        }
+        .stat-card h2 {
+            color: var(--c-accent);
+            font-size: 2.5rem;
+            margin-bottom: 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-style: italic;
+            position: relative;
+            margin-bottom: 2rem;
+            color: var(--c-text);
+        }
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--c-accent);
+            margin: 10px auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper animate-fade-in">
+        <!-- Header will be dynamically inserted here -->
+
+        <!-- Hero Section -->
+        <main style="flex: 1;">
+            <div class="hero yearbook-border" style="padding: 0;">
+                <img src="assets/hero.png" alt="Class Cover">
+                <div class="hero-text">
+                    <h1 id="classNameHero">Lớp 12A1</h1>
+                    <p id="classSloganHero">Niên khóa 2021 - 2024</p>
+                </div>
+            </div>
+
+            <!-- Stats Section -->
+            <div class="stats-container yearbook-border">
+                <div class="stat-card">
+                    <h2>42</h2>
+                    <p>Thành viên</p>
+                </div>
+                <div class="stat-card">
+                    <h2>156</h2>
+                    <p>Bức ảnh</p>
+                </div>
+                <div class="stat-card">
+                    <h2>89</h2>
+                    <p>Lời nhắn</p>
+                </div>
+            </div>
+
+            <!-- Random Memory & Navigation Links -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 4rem;">
+                
+                <!-- Random Memory -->
+                <div>
+                    <h3 class="section-title">Kỷ Niệm Ngẫu Nhiên</h3>
+                    <div id="random-memory-container">
+                        <!-- Content inserted via script.js -->
+                    </div>
+                </div>
+
+                <!-- Features Navigation -->
+                <div>
+                    <h3 class="section-title">Khám Phá Kỷ Yếu</h3>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <a href="timeline.html" class="yearbook-border nav-card" style="display: block; text-decoration: none;">
+                            <h3>📅 Timeline</h3>
+                        </a>
+                        <a href="gallery.html" class="yearbook-border nav-card" style="display: block; text-decoration: none;">
+                            <h3>🖼️ Gallery</h3>
+                        </a>
+                        <a href="guestbook.html" class="yearbook-border nav-card" style="display: block; text-decoration: none;">
+                            <h3>📝 Lưu Bút</h3>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+        
+        <!-- Footer will be dynamically inserted here -->
+    </div>
+
+    <!-- Script chung -->
+    <script src="script.js"></script>
+    <script>
+        // Update hero dynamic text if needed
+        document.getElementById('classNameHero').innerText = CLASS_INFO.name;
+        document.getElementById('classSloganHero').innerText = CLASS_INFO.year;
+    </script>
+</body>
+</html>
