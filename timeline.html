@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Timeline - Kỷ Yếu Lớp</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
         .timeline {
@@ -46,11 +49,21 @@
             z-index: 1;
         }
 
-        .left { left: 0; }
-        .right { left: 50%; }
+        .left {
+            left: 0;
+        }
 
-        .left::after { right: -14px; }
-        .right::after { left: -14px; }
+        .right {
+            left: 50%;
+        }
+
+        .left::after {
+            right: -14px;
+        }
+
+        .right::after {
+            left: -14px;
+        }
 
         .content {
             padding: 20px 30px;
@@ -64,21 +77,54 @@
             border: 2px solid var(--c-border);
         }
 
-        .content h3 { color: var(--c-accent); margin-bottom: 5px; }
-        .content p.date { font-style: italic; opacity: 0.7; margin-bottom: 10px; font-size: 0.9rem; }
-        
-        .page-header { text-align: center; margin-bottom: 3rem; }
-        .page-header h1 { font-size: 3rem; }
-        
+        .content h3 {
+            color: var(--c-accent);
+            margin-bottom: 5px;
+        }
+
+        .content p.date {
+            font-style: italic;
+            opacity: 0.7;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+        }
+
         @media screen and (max-width: 600px) {
-            .timeline::after { left: 31px; }
-            .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; }
-            .timeline-item::after { left: 18px; }
-            .left::after, .right::after { left: 18px; }
-            .right { left: 0; }
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item::after {
+                left: 18px;
+            }
+
+            .left::after,
+            .right::after {
+                left: 18px;
+            }
+
+            .right {
+                left: 0;
+            }
         }
     </style>
 </head>
+
 <body>
     <div class="page-wrapper animate-fade-in">
         <main style="flex: 1; padding: 2rem 0;">
@@ -90,25 +136,164 @@
             <div class="timeline">
                 <div class="timeline-item left">
                     <div class="content yearbook-border">
-                        <h3>Ngày Tựu Trường</h3>
-                        <p class="date">05/09/2021</p>
-                        <p>Ngày đầu tiên bước chân vào lớp 10, những gương mặt bỡ ngỡ và lạ lẫm nhưng tràn đầy năng lượng.</p>
-                        <img src="assets/gallery_mock.png" alt="Tựu trường">
+                        <h3>Ngày Tựu Trường Đầu Tiên</h3>
+                        <p class="date">05/09/2023</p>
+                        <p>Ngày đầu tiên bước chân vào lớp 10, những gương mặt bỡ ngỡ và lạ lẫm nhưng tràn đầy năng
+                            lượng.</p>
+                        <img src="assets/1.jpg" alt="Tựu trường">
                     </div>
                 </div>
                 <div class="timeline-item right">
                     <div class="content yearbook-border">
-                        <h3>Hội Trại 26/3</h3>
-                        <p class="date">25/03/2022</p>
-                        <p>Cả lớp thức trắng đêm dựng trại, hát hò quanh lửa trại và chơi trò chơi tới sáng.</p>
+                        <h3>Đêm Rằm Trung Thu</h3>
+                        <p class="date">27/9/2023</p>
+                        <p>Cả lớp cùng nhau làm mâm và phá cỗ. Giải khuyến khích đầu tiên !</p>
+                        <img src="assets/2.jpg" alt="Trung Thu">
                     </div>
                 </div>
                 <div class="timeline-item left">
                     <div class="content yearbook-border">
-                        <h3>Chụp Ảnh Kỷ Yếu</h3>
-                        <p class="date">15/04/2024</p>
-                        <p>Cùng nhau mặc áo cử nhân, áo dài, lưu lại những bức hình rực rỡ nhất tại sân trường.</p>
-                        <img src="assets/hero.png" alt="Chụp kỷ yếu">
+                        <h3>Đại hội chi đoàn</h3>
+                        <p class="date">12/10/2023</p>
+                        <p>Buổi lễ đại hội chi đoàn đầu tay !</p>
+                        <img src="assets/3.jpg" alt="Chụp kỷ yếu">
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="content yearbook-border">
+                        <h3>Ngày Phụ Nữ Việt Nam 20/10</h3>
+                        <p class="date">20/10/2023</p>
+                        <p>Ngày đầu tiên các bạn nam được tổ chức cho các bạn nữ.</p>
+                        <img src="assets/4.jpg" alt="Tựu trường">
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="content yearbook-border">
+                        <h3>Buổi liên hoan</h3>
+                        <p class="date">19/11/2023</p>
+                        <p>Ngày lễ 20/11 đầu tại trường C, và chúng ta có một bữa liên hoan</p>
+                        <img src="assets/5.jpg" alt="Tựu trường">
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="content yearbook-border">
+                        <h3>Ngày 19/11</h3>
+                        <p class="date">19/11/2023</p>
+                        <p>Một ngày vừa vui và cũng vừa buồn !</p>
+                        <img src="assets/6.jpg" alt="Tựu trường">
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="content yearbook-border">
+                        <h3>Ngày Nhà Giáo Việt Nam</h3>
+                        <p class="date">20/11/2023</p>
+                        <p>20/11 đầu thật đáng nhớ</p>
+                        <img src="assets/7.jpg" alt="Tựu trường">
+                        <img src="assets/8.jpg" alt="Tựu trường">
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="content yearbook-border">
+                        <h3></h3>
+                        <p class="date">Lần đầu gặp mặt Cô Thư !</p>
+
+                        <img src="assets/9.jpg" alt="Tựu trường">
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="content yearbook-border">
+                        <h3>Merry Christmas</h3>
+                        <p class="date">25/12/2023</p>
+                        <img src="assets/10.jpg" alt="Tựu trường">
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="content yearbook-border">
+                        <h3>Bản Lác - Mai Châu</h3>
+                        <p class="date">10/1/2024</p>
+                        <img src="assets/11.jpg" alt="Tựu trường">
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="content yearbook-border">
+                        <h3>Ngày 8/3 đầu tiên !</h3>
+                        <p class="date">8/3/2024</p>
+                        <img src="assets/12.jpg" alt="Tựu trường">
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="content yearbook-border">
+                        <h3>Sinh Nhật</h3>
+                        <p class="date">16/4/2024</p>
+                        <img src="assets/13.jpg" alt="Tựu trường">
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="content yearbook-border">
+                        <h3>Burns Like Fire !</h3>
+                        <p class="date">13/10/2024</p>
+                        <img src="assets/14.jpg" alt="Tựu trường">
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="content yearbook-border">
+                        <h3>Thái Hải - Thái Nguyên</h3>
+                        <p class="date">28/10/2024</p>
+                        <img src="assets/15.jpg" alt="Tựu trường">
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="content yearbook-border">
+                        <h3>19/11/2024</h3>
+                        <p class="date"></p>
+                        <img src="assets/16.jpg" alt="Tựu trường">
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="content yearbook-border">
+                        <h3>Ha Long Bay</h3>
+                        <p class="date">5/3/2025</p>
+                        <img src="assets/17.jpg" alt="Tựu trường">
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="content yearbook-border">
+                        <h3>8/3/2025</h3>
+                        <p class="date"></p>
+                        <img src="assets/18.jpg" alt="Tựu trường">
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="content yearbook-border">
+                        <h3>Ngày khai giảng cuối cùng<h3>
+                                <p class="date">5/9/2025</p>
+                                <img src="assets/19.jpg" alt="Tựu trường">
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="content yearbook-border">
+                        <h3>Thanh Hóa trip<h3>
+                                <p class="date">17/10/2025</p>
+                                <img src="assets/20.jpg" alt="Tựu trường">
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="content yearbook-border">
+                        <h3>20/10/2025 edition<h3>
+                                <p class="date"></p>
+                                <img src="assets/21.jpg" alt="Tựu trường">
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="content yearbook-border">
+                        <h3>Boy's day 2025<h3>
+                                <p class="date">19/11/2025</p>
+                                <img src="assets/22.jpg" alt="Tựu trường">
+                    </div>
+                </div>
+                <div class="timeline-item center">
+                    <div class="'timeline-item center">
+                        <h3>To be continued...</h3>
                     </div>
                 </div>
             </div>
@@ -118,4 +303,5 @@
     <!-- Script chung -->
     <script src="script.js"></script>
 </body>
+
 </html>
